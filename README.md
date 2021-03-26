@@ -1,0 +1,1 @@
+This a site-blog which has posts and the visitor can see any post and can search for any post
