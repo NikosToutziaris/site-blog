@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+<head>
+
+</head>
+<body>
+    {% block content %}
+        <div class="row row2">
+                <div class="col-sm-2">Αναζήτηση</div>
+                <div class="col-sm-8">
+                    <form type="get" action=".">
+                        <input type="text" name="txt">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+        </div>
+        {% for post in posts %}
+            <div class="post">
+                <div class="date">
+                    <p>published:{{post.published_date}}</p>
+                </div>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title}}</a></h1>
+                <p>{{ post.text|linebreaks }}</p>
+                <p>Written by {{ post.author }}
+                    {% if post.category %}
+                        on <a href="{% url 'post_list' %}?cat={{ post.category_id }} ">{{ post.category }}</a>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    {% endblock content %}
+</body>
